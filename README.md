@@ -6,7 +6,7 @@ How to set up very quickly:
 1. Download and install docker: https://docs.docker.com/engine/installation/ (This is probably the hardest part)
 2. Download this git repo, either use:
 
-<code> git clone git@github.com:AtomSyncSettings/DockerTest.git </code>
+<code> git clone https://github.com/AtomSyncSettings/DockerTest.git </code>
 
 or [download the zip](https://github.com/AtomSyncSettings/DockerTest/archive/master.zip) & extract it
 
