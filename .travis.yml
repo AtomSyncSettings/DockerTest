@@ -1,15 +1,17 @@
 sudo: required
 
-language: python
-
 services:
   - docker
 
 install:
   - docker build -t elastixtest/test .
+  - docker run -d --name elastix elastixtest/test tail -f /dev/null
+
+script:
+  - docker ps | grep -q elastix
 
 after_failure:
-- docker logs mycontainer
+  - docker logs mycontainer
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then

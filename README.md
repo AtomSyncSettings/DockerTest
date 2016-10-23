@@ -10,15 +10,19 @@ How to set up very quickly:
 
 or [download the zip](https://github.com/AtomSyncSettings/DockerTest/archive/master.zip) & extract it
 
-3. run:
+3. cd to the folder you just extracted and run:
 
-<code> docker build . </code> 
+<code> docker build . -t elastixtest/test </code> 
 
-Note: if you run outside the institute comment out line 6 of the Dockerfile
 
 4. You're done! To use the new installation just run:
 
-<code> docker .... </code>
+<code> docker run -it elastixtest/test </code>
 
-And you are logged in with a working elaxtis and ITK installation!
+And you are logged in with a working elastix and ITK installation!
 
+Try it out by now running:
+    
+<code> elastix --help </code>
+
+And it should give the elastix help!
