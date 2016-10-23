@@ -1,3 +1,3 @@
-a = "This is a string, but not long enough to cause an error"
+a = "this is just a python file with a strong to show flake8"
+b = "if this file would give an error, there will be no build"
 
-b = "This is another string, but this one is very long and will cause flake8 to complain because it doesn't comply to the python standard"
