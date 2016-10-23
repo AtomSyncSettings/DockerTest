@@ -6,7 +6,7 @@ services:
   - docker
 
 install:
-  - docker build -t DockerTest/Elastix .
+  - docker build -t elastixtest/test .
 
 after_failure:
 - docker logs mycontainer
