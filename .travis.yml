@@ -1,28 +1,27 @@
 sudo: required
 language: python
 
+notifications:
+  slack: erasmus-radiogenomics:3wf0Nz5Zo7JqwWGrBET7XAy7
+
 services:
   - docker
 
-install:
-  - docker build -t elastixtest/test .
-  - docker run -d --name elastix elastixtest/test tail -f /dev/null
+#install:
+#  - docker build -t elastixtest/test .
+#  - docker run -d --name elastix elastixtest/test tail -f /dev/null
 
 script:
-  - docker ps | grep -q elastix
+  #- docker ps | grep -q elastix
+  - ls
 
-after_failure:
-  - docker logs mycontainer
+#after_failure:
+#  - docker logs mycontainer
 
-after_success:
-  - if [ "$TRAVIS_BRANCH" == "master" ]; then
-    docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-    docker push elastixtest/test;
-    fi
+#after_success:
+#  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+#    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+#    docker push elastixtest/test;
+#    fi
 
-notifications:
-  slack:
-    rooms:
-      - $SLACK_CHANNEL#code-updates
-    on_success: always
 
