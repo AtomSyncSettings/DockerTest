@@ -19,3 +19,6 @@ after_success:
     docker push elastixtest/test;
     fi
 
+notifications:
+  slack: $SLACK_CHANNEL
+
