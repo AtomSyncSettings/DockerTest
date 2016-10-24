@@ -9,18 +9,21 @@ RUN "sh" "-c" "echo nameserver 10.176.0.8 >> /etc/resolv.conf"
 RUN apt-get update
 
 # Install tools for building
-RUN apt-get install -y build-essential cmake
+RUN apt-get install -y -qq build-essential cmake
 # Install extraction tools
-RUN apt-get install -y tar unzip
+RUN apt-get install -y -qq tar unzip
 # Git needed later on
-RUN apt-get install -y git
+RUN apt-get install -y -qq git
+# pip for python tools
+RUN apt-get install -y -qq python-pip
+RUN pip install flake8
 
 # Everything will be placed in the /home/tools dir, first ITK:
 WORKDIR /home/tools/ITK/
 
 # Obtain the ITK sources
 ADD http://downloads.sourceforge.net/project/itk/itk/4.10/InsightToolkit-4.10.1.tar.gz?r=https%3A%2F%2Fitk.org%2FITK%2Fresources%2Fsoftware.html&ts=1477129065&use_mirror=kent /home/tools/ITK/itk.tar.gz
-RUN mkdir /home/tools/ITK/ITK-src/ && tar -xvzf /home/tools/ITK/itk.tar.gz -C /home/tools/ITK/ITK-src/ --strip-components=1
+RUN mkdir /home/tools/ITK/ITK-src/ && tar -xzf /home/tools/ITK/itk.tar.gz -C /home/tools/ITK/ITK-src/ --strip-components=1
 
 # Compile ITK
 WORKDIR /home/tools/ITK/ITK-bin/
@@ -43,8 +46,6 @@ WORKDIR /home/pytest/
 ADD https://github.com/AtomSyncSettings/DockerTest/archive/master.zip master.zip
 RUN unzip master.zip
 WORKDIR /home/pytest/DockerTest-master/
-RUN apt-get install -y python-pip
-RUN pip install flake8
 RUN flake8 test.py
 
 

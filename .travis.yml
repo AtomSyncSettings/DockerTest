@@ -20,5 +20,8 @@ after_success:
     fi
 
 notifications:
-  slack: $SLACK_CHANNEL
+  slack:
+	rooms:
+		- $SLACK_CHANNEL#code-updates
+    on_success: always
 
