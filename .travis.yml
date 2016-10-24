@@ -1,4 +1,5 @@
 sudo: required
+language: python
 
 services:
   - docker
@@ -21,7 +22,7 @@ after_success:
 
 notifications:
   slack:
-	rooms:
-		- $SLACK_CHANNEL#code-updates
+    rooms:
+      - $SLACK_CHANNEL#code-updates
     on_success: always
 
