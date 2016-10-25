@@ -9,13 +9,13 @@ RUN "sh" "-c" "echo nameserver 10.176.0.8 >> /etc/resolv.conf"
 RUN apt-get -qq update
 
 # Install tools for building
-RUN apt-get -qq install -y build-essential cmake
+RUN apt-get -qq -y install build-essential cmake
 # Install extraction tools
-RUN apt-get -qq install -y tar unzip
+RUN apt-get -qq -y install tar unzip
 # Git needed later on
-RUN apt-get -qq install -y git
+RUN apt-get -qq -y install git
 # pip for python tools
-RUN apt-get -qq install -y python-pip
+RUN apt-get -qq -y install python-pip
 RUN pip install flake8
 
 # Everything will be placed in the /home/tools dir, first ITK:
